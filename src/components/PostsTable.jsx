@@ -1,8 +1,13 @@
 // components/UserTable.js 
 import axios from 'axios';
-import usePosts from '../hooks/usePosts';
+import { usePosts } from '../hooks/usePosts';
 import Button from '@material-ui/core/Button'
-import { Table } from '@material-ui/core';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
 
 //esto podria ir en usePosts
@@ -32,29 +37,31 @@ function PostTable() {
     return (
       <>
             <h1>Publicaciones</h1>
-
-      <Table>
-        <thead>
-          <tr>
-            <th>descripcion</th>
-            <th>ubiacion</th>
-            <th>fecha</th>
-            <th>ID usuario</th>
-            <th>accion</th>
-          </tr>
-        </thead>
-        <tbody>
+            <TableContainer>
+            <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>descripcion</TableCell>
+            <TableCell>ubiacion</TableCell>
+            <TableCell>fecha</TableCell>
+            <TableCell>ID usuario</TableCell>
+            <TableCell>accion</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {posts.map(post => (
-            <tr key={post.id}>
-              <td>{post.descripcion}</td>
-              <td>{post.ubicacion}</td>
-              <td>{post.fecha}</td>
-              <td>{post.userId}</td>
-              <td><Button variant="contained" color="secondary" onClick={()=>deletePostButton(post.id)}>Eliminar</Button></td>
-            </tr>
+            <TableRow key={post.id}>
+              <TableCell>{post.descripcion}</TableCell>
+              <TableCell>{post.ubicacion}</TableCell>
+              <TableCell>{post.fecha}</TableCell>
+              <TableCell>{post.userId}</TableCell>
+              <TableCell><Button variant="contained" color="secondary" onClick={()=>deletePostButton(post.id)}>Eliminar</Button></TableCell>
+            </TableRow>
           ))}
-        </tbody>
+        </TableBody>
       </Table>
+      
+            </TableContainer>
       
       </>
     

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getPosts } from '../services/api';
 
-export default function usePosts() {
+export function usePosts() {
 
   const [posts, setPosts] = useState([]);
 

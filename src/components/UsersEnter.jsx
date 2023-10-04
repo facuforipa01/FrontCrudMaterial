@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+
 import TextField from '@material-ui/core/TextField'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
@@ -32,7 +33,7 @@ export const UserEnter = (props) => {
         
         <TextField type="password" label='password' variant='outlined' value={password} onChange={(event) => setPassword(event.target.value)} />
         
-        <TextField type="email" label='email' variant='outlined' value={email} onChange={event => setEmail(event.target.value)} />
+        <TextField type="email" label='email' variant='outlined' value={email} onChange={(event) => setEmail(event.target.value)} />
 
         <Button type='submit' variant="contained">Enviar</Button>
         </Container>

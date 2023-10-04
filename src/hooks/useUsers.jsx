@@ -12,6 +12,3 @@ const [users, setUsers] = useState([]);
   return users;
 
 }
-
-
-
