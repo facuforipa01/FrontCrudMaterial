@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import TextField from '@material-ui/core/TextField'
-import Container from '@material-ui/core/Container'
-import Button from '@material-ui/core/Button'
+
+
+import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
+import { InputNumber } from 'primereact/inputnumber';
 
 
 export const PostEnter = (props) => {
@@ -23,33 +25,57 @@ export const PostEnter = (props) => {
       })
       .catch((error) => {
         alert('No anda el carga posteos');
-        console.log(error);
+        console.log(error.response.data);
       })
   }
 
 
   return (
     <>
-  
-      <h1>Add Posteos</h1>
+      <h1>Nueva Publicacion</h1>
+
       <form action="" onSubmit={handleSubmit2}>
-        <Container >
+        <div className="card flex flex-column md:flex-row gap-3">
 
-        <TextField type="text" label='descripcion' variant='outlined' value={descripcion} onChange={(event) => setDescripcion(event.target.value)} />
-        
-        <TextField type="text" label='fecha' variant='outlined' value={fecha} onChange={(event) => setFecha(event.target.value)} />
-       
-        <TextField type="text" label='imagen' variant='outlined' value={imagen} onChange={event => setImagen(event.target.value)} />
-        
-        <TextField type="text" label='ubicacion' variant='outlined' value={ubicacion} onChange={event => setUbicacion(event.target.value)} />
-       
-        <TextField type="number" label='userId' variant='outlined' value={userId} onChange={event => setUserId(event.target.value)} />
-        
-        <Button type='submit' variant="contained">Enviar</Button>
+          <div className="p-inputgroup flex-1">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-align-left"></i>
+            </span>
+            <InputText placeholder="Descripcion" type="text" value={descripcion} onChange={(event) => setDescripcion(event.target.value)} />
+          </div>
 
-        </Container>
+          <div className="p-inputgroup flex-1">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-calendar"></i>
+            </span>
+            <InputText placeholder="Fecha" type="text" value={fecha} onChange={(event) => setFecha(event.target.value)} />
+          </div>
 
+          <div className="p-inputgroup flex-1">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-image"></i>
+            </span>
+            <InputText placeholder="Imagen" type="text" value={imagen} onChange={event => setImagen(event.target.value)} />
+          </div>
+          
+          <div className="p-inputgroup flex-1">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-map-marker"></i>
+            </span>
+            <InputText placeholder="Ubicacion" type="text" value={ubicacion} onChange={event => setUbicacion(event.target.value)} />
+          </div>
+
+          <div className="p-inputgroup flex-1">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-user"></i>
+            </span>
+            <InputText placeholder="User ID" type="number" value={userId} onChange={event => setUserId(event.target.value)} />
+          </div>
+
+          <Button type='submit' variant="contained">Subir</Button>
+        </div>
       </form>
     </>
+
   );
 }
