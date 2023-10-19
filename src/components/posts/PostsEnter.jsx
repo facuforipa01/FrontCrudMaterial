@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { InputNumber } from 'primereact/inputnumber';
+import { Link } from 'react-router-dom';
 
 
 export const PostEnter = (props) => {
@@ -32,6 +32,7 @@ export const PostEnter = (props) => {
 
   return (
     <>
+    <Link to={`/posts`} className='btn btn-info'>Ver Publicaciones</Link>
       <h1>Nueva Publicacion</h1>
 
       <form action="" onSubmit={handleSubmit2}>

@@ -1,52 +1,52 @@
-import UserContextProvider from './context/UserContext';
+//Vistas Usuarios
+import UsersTableView from './pages/users/UsersTableView';
+import UsersEnterView from './pages/users/UsersEnterView';
 
-import PostContextProvider from './context/PostContext';
+
+//Vistas Posteos
+import PostsTableView from './pages/posts/PostsTableView';
+import PostsEnterView from './pages/posts/PostsEnterView';
+
+//react  
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+
+
+//PrimeReact
+
+//estilos primereact
 import 'primeicons/primeicons.css';
 import "primereact/resources/themes/lara-light-indigo/theme.css";
+import { Panel } from 'primereact/panel';
 
-import UserTable from './components/UsersTable'
-import { UserEnter } from './components/UsersEnter';
 
-import PostTable from './components/PostsTable';
-import { PostEnter } from './components/PostsEnter';
-
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-
-import React, { useState } from 'react';
-import { Sidebar } from 'primereact/sidebar';
-import { Button } from 'primereact/button';
- function BasicDemo() {
-  const [visible, setVisible] = useState(false);
-  return (
-    <div className="card flex justify-content-center">
-        <Sidebar visible={visible} onHide={() => setVisible(false)}>
-            <h2>Sidebar</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-        </Sidebar>
-        <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
-    </div>
-)
-}
 
 function App() {
   return (
+<>
+<a href='/users' >Ver Usuarios</a><br/>
+<a href='/newuser' >Nuevo Usuario</a><br/>
+<a href='/posts' >Ver Publicaciones</a><br/>
+<a href='/newpost' >Nueva Publicacion</a><br/>
 
+<Panel header="Socialize">
+<p>Esta es una red social creada por estudiantes del Instituto Tecnico Superior Cipolletti</p>
+</Panel>
 
-<PrimeReactProvider>
-<PostContextProvider>
+<BrowserRouter>
+        <Routes>
+          <Route path='/newpost' Component={PostsEnterView} >
+          </Route>
+          <Route path='/posts' Component={PostsTableView} >
+          </Route>
+          <Route path='/newuser' Component={UsersEnterView} >
+          </Route>
+          <Route path='/users' Component={UsersTableView} >
+          </Route>
+        </Routes>
+</BrowserRouter>
 
-<BasicDemo></BasicDemo>
-<PostEnter></PostEnter>
-<PostTable></PostTable>
-
-
-</PostContextProvider>
-</PrimeReactProvider>
-
-    
+</>
   )
 }
 

@@ -1,7 +1,8 @@
 // components/UserTable.js 
-import { usePosts } from '../hooks/usePosts';
+import { usePosts } from '../../hooks/usePosts';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Link } from 'react-router-dom';
 
 
 function PostTable() {
@@ -17,6 +18,7 @@ function PostTable() {
   } else {
     return (
       <>
+      <Link to={`/newpost`} className='btn btn-info'>Agregar Publicaciones</Link>
         <h1>Publicaciones</h1>
 
 
